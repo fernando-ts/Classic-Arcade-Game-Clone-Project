@@ -78,7 +78,7 @@ var Engine = (function(global) {
      * on the entities themselves within your app.js file).
      */
     function update(dt) {
-        updateEntities(dt);
+        //updateEntities(dt);  ---> by me 
         // checkCollisions();
     }
 
@@ -138,7 +138,7 @@ var Engine = (function(global) {
             }
         }
 
-        renderEntities();
+        //renderEntities();   ---> By me 
     }
 
     /* This function is called by the render function and is called on each game
