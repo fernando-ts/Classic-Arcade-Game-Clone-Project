@@ -6,7 +6,7 @@
  */
 (function() {
     var resourceCache = {};
-    var loading = [];
+    var loading = []; // --> By me: supposedly it is not longer used so we can delete it. 
     var readyCallbacks = [];
 
     /* This is the publicly accessible image loading function. It accepts
