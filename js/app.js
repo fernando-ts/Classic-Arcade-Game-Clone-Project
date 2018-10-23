@@ -25,7 +25,7 @@ class PlayerEntity {
     constructor() {
         this.x = 0;
         this.y= 0;
-        this.sprite = 'images/char-horn-girl.png';
+        this.sprite = 'images/char-boy.png';  //--> not all the images in the sfile would load properly
     }
 
     update() {
@@ -44,6 +44,7 @@ class PlayerEntity {
 
 
 // Now instantiate your objects.
+const player = new PlayerEntity();
 // Place all enemy objects in an array called allEnemies
 // Place the player object in a variable called player
 
