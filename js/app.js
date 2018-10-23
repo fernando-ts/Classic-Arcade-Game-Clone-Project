@@ -1,11 +1,8 @@
 // Enemies our player must avoid
-const Enemy = function() {
-    // Variables applied to each of our instances go here,
-    // we've provided one for you to get started
+const Enemy = function () {
+    //Constructor function (ES5 way for inheritance) with variables and characteristics for enemy which will be intantiaded later
+    this.sprite = 'images/enemy-bug.png'; //uses a provided helper to easily load images
 
-    // The image/sprite for our enemies, this uses
-    // a helper we've provided to easily load images
-    this.sprite = 'images/enemy-bug.png';
 };
 
 // Update the enemy's position, required method for game
@@ -24,6 +21,26 @@ Enemy.prototype.render = function() {
 // Now write your own player class
 // This class requires an update(), render() and
 // a handleInput() method.
+class PlayerEntity {
+    constructor() {
+        this.x = 0;
+        this.y= 0;
+        this.sprite = 'images/char-horn-girl.png';
+    }
+
+    update() {
+        
+    }
+
+    // Method that does the exact thing as the enemy render method 
+    render() {
+        ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
+    }
+
+    handleInput() {
+        
+    }
+}
 
 
 // Now instantiate your objects.
