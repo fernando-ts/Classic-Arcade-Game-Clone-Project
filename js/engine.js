@@ -92,7 +92,7 @@ var Engine = (function(global) {
     function updateEntities(dt) {
         // allEnemies.forEach(function(enemy) {
         //     enemy.update(dt);
-        // });                   ---> by me
+        // });                   ---> by me (enemies array not yet created in app.js)
         player.update();
     }
 
@@ -151,7 +151,7 @@ var Engine = (function(global) {
          */
         // allEnemies.forEach(function(enemy) {
         //     enemy.render();
-        // });
+        // });                ---> by me (also, allEnemies array not yet created)
 
         player.render();
     }

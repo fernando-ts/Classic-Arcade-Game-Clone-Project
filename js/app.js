@@ -37,8 +37,21 @@ class PlayerEntity {
         ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
     }
 
-    handleInput() {
-        
+    handleInput(keyUsed) {
+        switch (keyUsed) {
+            case 'right':
+                this.x += 10;
+                break;
+            case 'down':
+                this.y += 10;
+                break;
+            case 'left':
+                this.x -= 10;
+                break;
+            case 'up':
+                this.y -= 10;
+                break;
+        }
     }
 }
 
