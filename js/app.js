@@ -23,8 +23,8 @@ Enemy.prototype.render = function() {
 // a handleInput() method.
 class PlayerEntity {
     constructor() {
-        this.x = 0;
-        this.y= 0;
+        this.x = 2;
+        this.y= 5;
         this.sprite = 'images/char-boy.png';  //--> not all the images in the sfile would load properly
     }
 
@@ -32,24 +32,24 @@ class PlayerEntity {
         
     }
 
-    // Method that does the exact thing as the enemy render method 
+    // Method that does the exact thing as the enemy render method. It is multiplied by the initial X and Y coordinates the images are displayed. 
     render() {
-        ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
+        ctx.drawImage(Resources.get(this.sprite), this.x * 101, this.y * 70);
     }
 
     handleInput(keyUsed) {
         switch (keyUsed) {
             case 'right':
-                this.x += 10;
+                this.x = this.x < 4 ? this.x + 1 : this.x;
                 break;
             case 'down':
-                this.y += 10;
+                this.y = this.y < 5 ? this.y + 1 : this.y;
                 break;
             case 'left':
-                this.x -= 10;
+                this.x = this.x > 0 ? this.x - 1 : this.x;
                 break;
             case 'up':
-                this.y -= 10;
+                this.y = this.y > 0 ? this.y - 1 : this.y;
                 break;
         }
     }
