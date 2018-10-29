@@ -1,7 +1,9 @@
 // Enemies our player must avoid
-const Enemy = function () {
+const Enemy = function (y) {
     //Constructor function (ES5 way for inheritance) with variables and characteristics for enemy which will be intantiaded later
     this.sprite = 'images/enemy-bug.png'; //uses a provided helper to easily load images
+    this.x = 0;
+    this.y = y;
 
 };
 
@@ -11,11 +13,16 @@ Enemy.prototype.update = function(dt) {
     // You should multiply any movement by the dt parameter
     // which will ensure the game runs at the same speed for
     // all computers.
+    if (this.x < 4.8) {
+        this.x += dt; 
+    } else {
+        this.x = -1;
+    }
 };
 
 // Draw the enemy on the screen, required method for game
 Enemy.prototype.render = function() {
-    ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
+    ctx.drawImage(Resources.get(this.sprite), this.x * 101, this.y * 70.5);
 };
 
 // Now write your own player class
@@ -34,7 +41,7 @@ class PlayerEntity {
 
     // Method that does the exact thing as the enemy render method. It is multiplied by the initial X and Y coordinates the images are displayed. 
     render() {
-        ctx.drawImage(Resources.get(this.sprite), this.x * 101, this.y * 70);
+        ctx.drawImage(Resources.get(this.sprite), this.x * 101, this.y * 73);
     }
 
     handleInput(keyUsed) {
@@ -57,9 +64,11 @@ class PlayerEntity {
 
 
 // Now instantiate your objects.
-const player = new PlayerEntity();
-// Place all enemy objects in an array called allEnemies
+// Return a new Enemies array of 3 elements spreaded with different Y coordinates  
+const allEnemies = [...Array(3)].map((elem, index ) => new Enemy(index+1));
+
 // Place the player object in a variable called player
+const player = new PlayerEntity();
 
 
 
