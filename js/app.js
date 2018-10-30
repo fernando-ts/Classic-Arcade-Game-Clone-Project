@@ -4,7 +4,7 @@ const Enemy = function (y) {
     this.sprite = 'images/enemy-bug.png'; //uses a provided helper to easily load images
     this.x = 0;
     this.y = y;
-
+    this.speed = Math.random() * (1.9 - .95) + .95;
 };
 
 // Update the enemy's position, required method for game
@@ -14,7 +14,7 @@ Enemy.prototype.update = function(dt) {
     // which will ensure the game runs at the same speed for
     // all computers.
     if (this.x < 4.8) {
-        this.x += dt; 
+        this.x += this.speed * dt; 
     } else {
         this.x = -1;
     }
@@ -64,7 +64,7 @@ class PlayerEntity {
 
 
 // Now instantiate your objects.
-// Return a new Enemies array of 3 elements spreaded with different Y coordinates  
+//--> Return a new Enemies array of 3 elements spreaded with different Y coordinates  
 const allEnemies = [...Array(3)].map((elem, index ) => new Enemy(index+1));
 
 // Place the player object in a variable called player
