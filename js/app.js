@@ -36,7 +36,15 @@ class PlayerEntity {
     }
 
     update() {
-        
+        //--> Check for collisions of player/enemy. Update player position. 
+        for (let enemy of allEnemies) {
+            if (this.y === enemy.y) {
+                if (this.x >= enemy.x - 0.79 && this.x <= enemy.x + 0.79) {
+                    this.x = 2;
+                    this.y = 5;
+                }
+            }
+        }
     }
 
     // Method that does the exact thing as the enemy render method. It is multiplied by the initial X and Y coordinates the images are displayed. 
