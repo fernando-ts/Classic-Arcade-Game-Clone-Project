@@ -22,7 +22,8 @@ var Engine = (function(global) {
         win = global.window,
         canvas = doc.createElement('canvas'),
         ctx = canvas.getContext('2d'),
-        lastTime;
+        lastTime,
+        requestID;
 
     canvas.width = 505;
     canvas.height = 606;
@@ -52,10 +53,13 @@ var Engine = (function(global) {
          */
         lastTime = now;
 
-        /* Use the browser's requestAnimationFrame function to call this
-         * function again as soon as the browser is able to draw another frame.
-         */
-        win.requestAnimationFrame(main);
+        //--> Check if player reached the river: stop the animation drawing if yes.  
+        if (player.winner === true){
+            console.log("YOU DID IT!!");
+            win.cancelAnimationFrame(requestID);
+        } else {
+            requestID = win.requestAnimationFrame(main);
+        }
     }
 
     /* This function does some initial setup that should only occur once,

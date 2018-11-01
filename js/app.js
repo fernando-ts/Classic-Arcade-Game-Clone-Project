@@ -33,6 +33,7 @@ class PlayerEntity {
         this.x = 2;
         this.y= 5;
         this.sprite = 'images/char-boy.png';  //--> not all the images in the sfile would load properly
+        this.winner = false;
     }
 
     update() {
@@ -44,6 +45,10 @@ class PlayerEntity {
                     this.y = 5;
                 }
             }
+        }
+        //--> Check if player reached river 
+        if (this.y === 0) {
+            this.winner = true;
         }
     }
 
