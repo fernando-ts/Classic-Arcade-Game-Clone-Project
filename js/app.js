@@ -32,7 +32,7 @@ class PlayerEntity {
     constructor() {
         this.x = 2;
         this.y= 5;
-        this.sprite = 'images/char-boy.png';  //--> not all the images in the sfile would load properly
+        this.sprite = 'images/char-horn-girl.png';
         this.winner = false;
     }
 
