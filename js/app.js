@@ -41,14 +41,14 @@ class PlayerEntity {
         for (let enemy of allEnemies) {
             if (this.y === enemy.y) {
                 if (this.x >= enemy.x - 0.79 && this.x <= enemy.x + 0.79) {
-                    this.x = 2;
-                    this.y = 5;
+                    this.reset();
                 }
             }
         }
         //--> Check if player reached river 
         if (this.y === 0) {
             this.winner = true;
+            document.querySelector('.end-modal').style.display = 'flex';
         }
     }
 
@@ -73,6 +73,11 @@ class PlayerEntity {
                 break;
         }
     }
+
+    reset() {
+        this.x = 2;
+        this.y = 5;
+    }
 }
 
 
@@ -96,4 +101,11 @@ document.addEventListener('keyup', function(e) {
     };
 
     player.handleInput(allowedKeys[e.keyCode]);
+});
+
+
+//--> Close the modal from the close sign  
+document.querySelector('.close').addEventListener('click', function () {
+    document.querySelector('.end-modal').style.display = 'none';
+    
 });

@@ -55,11 +55,18 @@ var Engine = (function(global) {
 
         //--> Check if player reached the river: stop the animation drawing if yes.  
         if (player.winner === true){
-            console.log("YOU DID IT!!");
             win.cancelAnimationFrame(requestID);
         } else {
             requestID = win.requestAnimationFrame(main);
         }
+
+        //--> Play again for button in modal   
+        document.getElementById('new-game').addEventListener('click', function () {
+            document.querySelector('.end-modal').style.display = 'none';
+            player.reset();
+            player.winner = false;
+            // win.requestAnimationFrame(main);
+        });
     }
 
     /* This function does some initial setup that should only occur once,
