@@ -1,33 +1,30 @@
-// Enemies our player must avoid
-const Enemy = function (y) {
-    //Constructor function (ES5 way for inheritance) with variables and characteristics for enemy which will be intantiaded later
-    this.sprite = 'images/enemy-bug.png'; //uses a provided helper to easily load images
-    this.x = 0;
-    this.y = y;
-    this.speed = Math.random() * (1.9 - .95) + .95;
-};
-
-// Update the enemy's position, required method for game
-// Parameter: dt, a time delta between ticks
-Enemy.prototype.update = function(dt) {
-    // You should multiply any movement by the dt parameter
-    // which will ensure the game runs at the same speed for
-    // all computers.
-    if (this.x < 4.8) {
-        this.x += this.speed * dt; 
-    } else {
-        this.x = -1;
+//--> Creation of Enemy class (the player's enemy) 
+class EnemyEntity {
+    //--> ES6 Contructor equivalent to what a constructor function does in ES5
+    constructor(y) {
+        this.sprite = 'images/enemy-bug.png';
+        this.x = 0;
+        this.y = y;
+        this.speed = Math.random() * (1.9 - .95) + .95;
     }
-};
 
-// Draw the enemy on the screen, required method for game
-Enemy.prototype.render = function() {
-    ctx.drawImage(Resources.get(this.sprite), this.x * 101, this.y * 70.5);
-};
+    //--> Updates the enemy's position based on the X coordinate limit using dt (time delta) between ticks 
+    update(dt) {
+        if (this.x < 4.8) {
+            this.x += this.speed * dt;
+        } else {
+            this.x = -1;
+        }
+    }
 
-// Now write your own player class
-// This class requires an update(), render() and
-// a handleInput() method.
+    //--> Draw the enemy on the screen, myltiplying it by N. Then displayed correctly inside the canvas
+    render() {
+        ctx.drawImage(Resources.get(this.sprite), this.x * 101, this.y * 70.5);
+    }
+}
+
+
+//--> Creation of Player class 
 class PlayerEntity {
     constructor() {
         this.x = 2;
@@ -52,11 +49,12 @@ class PlayerEntity {
         }
     }
 
-    // Method that does the exact thing as the enemy render method. It is multiplied by the initial X and Y coordinates the images are displayed. 
+    //--> Draw the player in the canvas 
     render() {
         ctx.drawImage(Resources.get(this.sprite), this.x * 101, this.y * 73);
     }
 
+    //--> Handle the player's movment inside the canvas based on what key is pressed
     handleInput(keyUsed) {
         switch (keyUsed) {
             case 'right':
@@ -74,6 +72,7 @@ class PlayerEntity {
         }
     }
 
+    //--> Reset the players position to the initial position
     reset() {
         this.x = 2;
         this.y = 5;
@@ -81,17 +80,15 @@ class PlayerEntity {
 }
 
 
-// Now instantiate your objects.
-//--> Return a new Enemies array of 3 elements spreaded with different Y coordinates  
-const allEnemies = [...Array(3)].map((elem, index ) => new Enemy(index+1));
 
-// Place the player object in a variable called player
+//--> Return a new Enemies array of 3 elements spreaded with different Y coordinates  
+const allEnemies = [...Array(3)].map((elem, index ) => new EnemyEntity(index+1));
+
+//--> Instantiate a new player that is displayed in the canvas 
 const player = new PlayerEntity();
 
 
-
-// This listens for key presses and sends the keys to your
-// Player.handleInput() method. You don't need to modify this.
+//--> Listen for key presses and sends it to the player.handleInput() method
 document.addEventListener('keyup', function(e) {
     const allowedKeys = {
         37: 'left',
