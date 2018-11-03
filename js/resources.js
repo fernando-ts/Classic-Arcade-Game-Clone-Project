@@ -5,8 +5,7 @@
  * to load the same image multiple times.
  */
 (function() {
-    var resourceCache = {};
-    var loading = []; // --> By me: supposedly it is not longer used so we can delete it. 
+    var resourceCache = {}; 
     var readyCallbacks = [];
 
     /* This is the publicly accessible image loading function. It accepts

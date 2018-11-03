@@ -80,13 +80,11 @@ class PlayerEntity {
 }
 
 
-
 //--> Return a new Enemies array of 3 elements spreaded with different Y coordinates  
 const allEnemies = [...Array(3)].map((elem, index ) => new EnemyEntity(index+1));
 
 //--> Instantiate a new player that is displayed in the canvas 
 const player = new PlayerEntity();
-
 
 //--> Listen for key presses and sends it to the player.handleInput() method
 document.addEventListener('keyup', function(e) {
@@ -99,7 +97,6 @@ document.addEventListener('keyup', function(e) {
 
     player.handleInput(allowedKeys[e.keyCode]);
 });
-
 
 //--> Close the modal from the close sign  
 document.querySelector('.close').addEventListener('click', function () {
